@@ -122,12 +122,12 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.0+commit.26b70077\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"who\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/spyder/Programming/Projects/YFMOONSHOT-TOKEN-CONTRACT/contracts/YFMSTokenSale.sol\":\"ERC20\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/spyder/Programming/Projects/YFMOONSHOT-TOKEN-CONTRACT/contracts/YFMSTokenSale.sol\":{\"keccak256\":\"0xfd8d5eaf8856d3eeaf0edc787edfb0807187b233d259539705eb9520c0aaabbe\",\"urls\":[\"bzz-raw://0cbd427003bd832d6f568cce4a3bc64fe5034f11494a82d8cce73c45e0ac486c\",\"dweb:/ipfs/QmdPeqGPaQg7no462ghJcUegmJzTJCPAYMEAGfuxyzYVu8\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.0+commit.26b70077\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"who\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/spyder/Programming/Projects/YFMOONSHOT-TOKEN-CONTRACT/contracts/YFMSTokenSale.sol\":\"ERC20\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/spyder/Programming/Projects/YFMOONSHOT-TOKEN-CONTRACT/contracts/YFMSTokenSale.sol\":{\"keccak256\":\"0x6fb30cc2ee8479e686f1196713543f11a7a4468dc64da28295b1908abb56db91\",\"urls\":[\"bzz-raw://55709ad76dd7f91389a415e2c606a6ca292a27eae48f54f3efe62543b57d6b65\",\"dweb:/ipfs/QmP1mdX9kDkNFn9t75g2AKBuhKhq8DFHXZCMivuJGob85X\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity 0.6.0;\n\nlibrary SafeMath {\n  /**\n  * @dev Multiplies two unsigned integers, reverts on overflow.\n  */\n  function mul(uint256 a, uint256 b) internal pure returns (uint256) {\n    // Gas optimization: this is cheaper than requiring 'a' not being zero, but the\n    // benefit is lost if 'b' is also tested.\n    // See: https://github.com/OpenZeppelin/openzeppelin-solidity/pull/522\n    if (a == 0) {\n        return 0;\n    }\n\n    uint256 c = a * b;\n    require(c / a == b);\n\n    return c;\n  }\n\n  /**\n  * @dev Integer division of two unsigned integers truncating the quotient, reverts on division by zero.\n  */\n  function div(uint256 a, uint256 b) internal pure returns (uint256) {\n    // Solidity only automatically asserts when dividing by 0\n    require(b > 0);\n    uint256 c = a / b;\n    // assert(a == b * c + a % b); // There is no case in which this doesn't hold\n\n    return c;\n  }\n\n  /**\n  * @dev Subtracts two unsigned integers, reverts on overflow (i.e. if subtrahend is greater than minuend).\n  */\n  function sub(uint256 a, uint256 b) internal pure returns (uint256) {\n    require(b <= a);\n    uint256 c = a - b;\n\n    return c;\n  }\n\n  /**\n  * @dev Adds two unsigned integers, reverts on overflow.\n  */\n  function add(uint256 a, uint256 b) internal pure returns (uint256) {\n    uint256 c = a + b;\n    require(c >= a);\n\n    return c;\n  }\n\n  /**\n  * @dev Divides two unsigned integers and returns the remainder (unsigned integer modulo),\n  * reverts when dividing by zero.\n  */\n  function mod(uint256 a, uint256 b) internal pure returns (uint256) {\n    require(b != 0);\n    return a % b;\n  }\n}\n\ninterface ERC20 {\n  function balanceOf(address who) external view returns (uint256);\n  function allowance(address owner, address spender) external  view returns (uint256);\n  function transfer(address to, uint value) external  returns (bool success);\n  function transferFrom(address from, address to, uint256 value) external returns (bool success);\n  function approve(address spender, uint value) external returns (bool success);\n}\n\ncontract YFMSTokenSale {\n  using SafeMath for uint256;\n\n  uint256 public totalSold;\n  ERC20 public YFMSToken;\n  address payable public owner;\n\n  uint256 public collectedETH;\n  uint256 public startDate;\n\n  constructor(address _wallet) public {\n    owner = msg.sender;\n    YFMSToken = ERC20(_wallet);\n  }\n \n  // Converts ETH to YFMS and sends new YFMS to the sender\n  receive () external payable {\n    require(startDate > 0 && now.sub(startDate) <= 7 days);\n    require(YFMSToken.balanceOf(address(this)) > 0);\n    require(msg.value >= 1 ether && msg.value <= 50 ether);\n     \n    uint256 amount;\n        \n    if (now.sub(startDate) <= 1 days) {\n       amount = msg.value.mul(8);\n    } else if(now.sub(startDate) > 1 days && now.sub(startDate) <= 2 days) {\n       amount = msg.value.mul(7);\n    } else if(now.sub(startDate) > 2 days && now.sub(startDate) <= 3 days) {\n       amount = msg.value.mul(6);\n    } else if(now.sub(startDate) > 3 days && now.sub(startDate) <= 4 days) {\n       amount = msg.value.mul(5);\n    } else if(now.sub(startDate) > 4 days) {\n       amount = msg.value.mul(4);\n    }\n    \n    require(amount <= YFMSToken.balanceOf(address(this)));\n    totalSold = totalSold.add(amount);\n    collectedETH = collectedETH.add(msg.value);\n    YFMSToken.transfer(msg.sender, amount);\n  }\n\n  // Converts ETH to YFMS and sends new YFMS to the sender\n  function contribute() external payable {\n    require(startDate > 0 && now.sub(startDate) <= 7 days);\n    require(YFMSToken.balanceOf(address(this)) > 0);\n    require(msg.value >= 0.1 ether && msg.value <= 50 ether);\n      \n    uint256 amount;\n    \n    if(now.sub(startDate) <= 1 days) {\n      amount = msg.value.mul(8);\n    } else if(now.sub(startDate) > 1 days && now.sub(startDate) <= 2 days) {\n      amount = msg.value.mul(7);\n    } else if(now.sub(startDate) > 2 days && now.sub(startDate) <= 3 days) {\n      amount = msg.value.mul(6);\n    } else if(now.sub(startDate) > 3 days && now.sub(startDate) <= 4 days) {\n      amount = msg.value.mul(5);\n    } else if(now.sub(startDate) > 4 days) {\n      amount = msg.value.mul(4);\n    }\n \n    require(amount <= YFMSToken.balanceOf(address(this)));\n    totalSold = totalSold.add(amount);\n    collectedETH = collectedETH.add(msg.value);\n    YFMSToken.transfer(msg.sender, amount);\n  }\n\n  // Function to withdraw raised ETH\n  // Only the contract owner can call this function\n  function withdrawETH() public {\n    require(msg.sender == owner && address(this).balance > 0 && collectedETH > 0);\n    uint256 amount = collectedETH;\n    collectedETH = 0;\n    owner.transfer(amount);\n  }\n  \n  // Function to withdraw available YFMS\n  // Only the contract owner can call this function\n  function withdrawYFMS() public {\n     require(msg.sender == owner && YFMSToken.balanceOf(address(this)) > 0);\n     YFMSToken.transfer(owner, YFMSToken.balanceOf(address(this)));\n  }\n  \n  //Starts the sale\n  //Only the contract owner can call this function\n  function startSale() public {\n    require(msg.sender == owner && startDate==0);\n    startDate=now;\n  }\n  \n  //Function to query the supply of YFMS in the contract\n  function availableYFMS() public view returns(uint256) {\n    return YFMSToken.balanceOf(address(this));\n  }\n}\n",
+  "source": "pragma solidity 0.6.0;\n\nlibrary SafeMath {\n  /**\n  * @dev Multiplies two unsigned integers, reverts on overflow.\n  */\n  function mul(uint256 a, uint256 b) internal pure returns (uint256) {\n    // Gas optimization: this is cheaper than requiring 'a' not being zero, but the\n    // benefit is lost if 'b' is also tested.\n    // See: https://github.com/OpenZeppelin/openzeppelin-solidity/pull/522\n    if (a == 0) {\n        return 0;\n    }\n\n    uint256 c = a * b;\n    require(c / a == b);\n\n    return c;\n  }\n\n  /**\n  * @dev Integer division of two unsigned integers truncating the quotient, reverts on division by zero.\n  */\n  function div(uint256 a, uint256 b) internal pure returns (uint256) {\n    // Solidity only automatically asserts when dividing by 0\n    require(b > 0);\n    uint256 c = a / b;\n    // assert(a == b * c + a % b); // There is no case in which this doesn't hold\n\n    return c;\n  }\n\n  /**\n  * @dev Subtracts two unsigned integers, reverts on overflow (i.e. if subtrahend is greater than minuend).\n  */\n  function sub(uint256 a, uint256 b) internal pure returns (uint256) {\n    require(b <= a);\n    uint256 c = a - b;\n\n    return c;\n  }\n\n  /**\n  * @dev Adds two unsigned integers, reverts on overflow.\n  */\n  function add(uint256 a, uint256 b) internal pure returns (uint256) {\n    uint256 c = a + b;\n    require(c >= a);\n\n    return c;\n  }\n\n  /**\n  * @dev Divides two unsigned integers and returns the remainder (unsigned integer modulo),\n  * reverts when dividing by zero.\n  */\n  function mod(uint256 a, uint256 b) internal pure returns (uint256) {\n    require(b != 0);\n    return a % b;\n  }\n}\n\ninterface ERC20 {\n  function balanceOf(address who) external view returns (uint256);\n  function allowance(address owner, address spender) external  view returns (uint256);\n  function transfer(address to, uint value) external  returns (bool success);\n  function transferFrom(address from, address to, uint256 value) external returns (bool success);\n  function approve(address spender, uint value) external returns (bool success);\n}\n\ncontract YFMSTokenSale {\n  using SafeMath for uint256;\n\n  uint256 public totalSold;\n  ERC20 public YFMSToken;\n  address payable public owner;\n\n  uint256 public collectedETH;\n  uint256 public startDate;\n\n  constructor(address _wallet) public {\n    owner = msg.sender;\n    YFMSToken = ERC20(_wallet);\n  }\n \n  // Converts ETH to YFMS and sends new YFMS to the sender\n  receive () external payable {\n    require(startDate > 0 && now.sub(startDate) <= 7 days);\n    require(YFMSToken.balanceOf(address(this)) > 0);\n    require(msg.value >= 1 ether && msg.value <= 50 ether);\n     \n    uint256 amount;\n        \n    if (now.sub(startDate) <= 1 days) {\n       amount = msg.value.mul(6);\n    } else if(now.sub(startDate) > 1 days && now.sub(startDate) <= 2 days) {\n       amount = msg.value.mul(5);\n    } else if(now.sub(startDate) > 2 days && now.sub(startDate) <= 3 days) {\n       amount = msg.value.mul(5);\n    } else if(now.sub(startDate) > 3 days && now.sub(startDate) <= 4 days) {\n       amount = msg.value.mul(5);\n    } else if(now.sub(startDate) > 4 days) {\n       amount = msg.value.mul(5);\n    }\n    \n    require(amount <= YFMSToken.balanceOf(address(this)));\n    totalSold = totalSold.add(amount);\n    collectedETH = collectedETH.add(msg.value);\n    YFMSToken.transfer(msg.sender, amount);\n  }\n\n  // Converts ETH to YFMS and sends new YFMS to the sender\n  function contribute() external payable {\n    require(startDate > 0 && now.sub(startDate) <= 7 days);\n    require(YFMSToken.balanceOf(address(this)) > 0);\n    require(msg.value >= 0.1 ether && msg.value <= 50 ether);\n      \n    uint256 amount;\n    \n    if(now.sub(startDate) <= 1 days) {\n      amount = msg.value.mul(6);\n    } else if(now.sub(startDate) > 1 days && now.sub(startDate) <= 2 days) {\n      amount = msg.value.mul(5);\n    } else if(now.sub(startDate) > 2 days && now.sub(startDate) <= 3 days) {\n      amount = msg.value.mul(5);\n    } else if(now.sub(startDate) > 3 days && now.sub(startDate) <= 4 days) {\n      amount = msg.value.mul(5);\n    } else if(now.sub(startDate) > 4 days) {\n      amount = msg.value.mul(5);\n    }\n \n    require(amount <= YFMSToken.balanceOf(address(this)));\n    totalSold = totalSold.add(amount);\n    collectedETH = collectedETH.add(msg.value);\n    YFMSToken.transfer(msg.sender, amount);\n  }\n\n  // Function to withdraw raised ETH\n  // Only the contract owner can call this function\n  function withdrawETH() public {\n    require(msg.sender == owner && address(this).balance > 0 && collectedETH > 0);\n    uint256 amount = collectedETH;\n    collectedETH = 0;\n    owner.transfer(amount);\n  }\n  \n  // Function to withdraw available YFMS\n  // Only the contract owner can call this function\n  function withdrawYFMS() public {\n     require(msg.sender == owner && YFMSToken.balanceOf(address(this)) > 0);\n     YFMSToken.transfer(owner, YFMSToken.balanceOf(address(this)));\n  }\n  \n  //Starts the sale\n  //Only the contract owner can call this function\n  function startSale() public {\n    require(msg.sender == owner && startDate==0);\n    startDate=now;\n  }\n  \n  //Function to query the supply of YFMS in the contract\n  function availableYFMS() public view returns(uint256) {\n    return YFMSToken.balanceOf(address(this));\n  }\n}\n",
   "sourcePath": "/home/spyder/Programming/Projects/YFMOONSHOT-TOKEN-CONTRACT/contracts/YFMSTokenSale.sol",
   "ast": {
     "absolutePath": "/home/spyder/Programming/Projects/YFMOONSHOT-TOKEN-CONTRACT/contracts/YFMSTokenSale.sol",
@@ -3019,7 +3019,7 @@
                                   "name": "this",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 1302,
+                                  "referencedDeclaration": 1296,
                                   "src": "2540:4:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_contract$_YFMSTokenSale_$1263",
@@ -4345,7 +4345,7 @@
                                     "arguments": [
                                       {
                                         "argumentTypes": null,
-                                        "hexValue": "34",
+                                        "hexValue": "35",
                                         "id": 932,
                                         "isConstant": false,
                                         "isLValue": false,
@@ -4356,17 +4356,17 @@
                                         "src": "3130:1:2",
                                         "subdenomination": null,
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_rational_4_by_1",
-                                          "typeString": "int_const 4"
+                                          "typeIdentifier": "t_rational_5_by_1",
+                                          "typeString": "int_const 5"
                                         },
-                                        "value": "4"
+                                        "value": "5"
                                       }
                                     ],
                                     "expression": {
                                       "argumentTypes": [
                                         {
-                                          "typeIdentifier": "t_rational_4_by_1",
-                                          "typeString": "int_const 4"
+                                          "typeIdentifier": "t_rational_5_by_1",
+                                          "typeString": "int_const 5"
                                         }
                                       ],
                                       "expression": {
@@ -4607,7 +4607,7 @@
                                 "arguments": [
                                   {
                                     "argumentTypes": null,
-                                    "hexValue": "36",
+                                    "hexValue": "35",
                                     "id": 895,
                                     "isConstant": false,
                                     "isLValue": false,
@@ -4618,17 +4618,17 @@
                                     "src": "2940:1:2",
                                     "subdenomination": null,
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_rational_6_by_1",
-                                      "typeString": "int_const 6"
+                                      "typeIdentifier": "t_rational_5_by_1",
+                                      "typeString": "int_const 5"
                                     },
-                                    "value": "6"
+                                    "value": "5"
                                   }
                                 ],
                                 "expression": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_rational_6_by_1",
-                                      "typeString": "int_const 6"
+                                      "typeIdentifier": "t_rational_5_by_1",
+                                      "typeString": "int_const 5"
                                     }
                                   ],
                                   "expression": {
@@ -4738,7 +4738,7 @@
                               "arguments": [
                                 {
                                   "argumentTypes": null,
-                                  "hexValue": "37",
+                                  "hexValue": "35",
                                   "id": 873,
                                   "isConstant": false,
                                   "isLValue": false,
@@ -4749,17 +4749,17 @@
                                   "src": "2829:1:2",
                                   "subdenomination": null,
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_rational_7_by_1",
-                                    "typeString": "int_const 7"
+                                    "typeIdentifier": "t_rational_5_by_1",
+                                    "typeString": "int_const 5"
                                   },
-                                  "value": "7"
+                                  "value": "5"
                                 }
                               ],
                               "expression": {
                                 "argumentTypes": [
                                   {
-                                    "typeIdentifier": "t_rational_7_by_1",
-                                    "typeString": "int_const 7"
+                                    "typeIdentifier": "t_rational_5_by_1",
+                                    "typeString": "int_const 5"
                                   }
                                 ],
                                 "expression": {
@@ -4869,7 +4869,7 @@
                             "arguments": [
                               {
                                 "argumentTypes": null,
-                                "hexValue": "38",
+                                "hexValue": "36",
                                 "id": 851,
                                 "isConstant": false,
                                 "isLValue": false,
@@ -4880,17 +4880,17 @@
                                 "src": "2718:1:2",
                                 "subdenomination": null,
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_rational_8_by_1",
-                                  "typeString": "int_const 8"
+                                  "typeIdentifier": "t_rational_6_by_1",
+                                  "typeString": "int_const 6"
                                 },
-                                "value": "8"
+                                "value": "6"
                               }
                             ],
                             "expression": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_rational_8_by_1",
-                                  "typeString": "int_const 8"
+                                  "typeIdentifier": "t_rational_6_by_1",
+                                  "typeString": "int_const 6"
                                 }
                               ],
                               "expression": {
@@ -5006,7 +5006,7 @@
                                   "name": "this",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 1302,
+                                  "referencedDeclaration": 1296,
                                   "src": "3195:4:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_contract$_YFMSTokenSale_$1263",
@@ -5751,7 +5751,7 @@
                                   "name": "this",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 1302,
+                                  "referencedDeclaration": 1296,
                                   "src": "3542:4:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_contract$_YFMSTokenSale_$1263",
@@ -7077,7 +7077,7 @@
                                     "arguments": [
                                       {
                                         "argumentTypes": null,
-                                        "hexValue": "34",
+                                        "hexValue": "35",
                                         "id": 1112,
                                         "isConstant": false,
                                         "isLValue": false,
@@ -7088,17 +7088,17 @@
                                         "src": "4125:1:2",
                                         "subdenomination": null,
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_rational_4_by_1",
-                                          "typeString": "int_const 4"
+                                          "typeIdentifier": "t_rational_5_by_1",
+                                          "typeString": "int_const 5"
                                         },
-                                        "value": "4"
+                                        "value": "5"
                                       }
                                     ],
                                     "expression": {
                                       "argumentTypes": [
                                         {
-                                          "typeIdentifier": "t_rational_4_by_1",
-                                          "typeString": "int_const 4"
+                                          "typeIdentifier": "t_rational_5_by_1",
+                                          "typeString": "int_const 5"
                                         }
                                       ],
                                       "expression": {
@@ -7339,7 +7339,7 @@
                                 "arguments": [
                                   {
                                     "argumentTypes": null,
-                                    "hexValue": "36",
+                                    "hexValue": "35",
                                     "id": 1075,
                                     "isConstant": false,
                                     "isLValue": false,
@@ -7350,17 +7350,17 @@
                                     "src": "3937:1:2",
                                     "subdenomination": null,
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_rational_6_by_1",
-                                      "typeString": "int_const 6"
+                                      "typeIdentifier": "t_rational_5_by_1",
+                                      "typeString": "int_const 5"
                                     },
-                                    "value": "6"
+                                    "value": "5"
                                   }
                                 ],
                                 "expression": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_rational_6_by_1",
-                                      "typeString": "int_const 6"
+                                      "typeIdentifier": "t_rational_5_by_1",
+                                      "typeString": "int_const 5"
                                     }
                                   ],
                                   "expression": {
@@ -7470,7 +7470,7 @@
                               "arguments": [
                                 {
                                   "argumentTypes": null,
-                                  "hexValue": "37",
+                                  "hexValue": "35",
                                   "id": 1053,
                                   "isConstant": false,
                                   "isLValue": false,
@@ -7481,17 +7481,17 @@
                                   "src": "3827:1:2",
                                   "subdenomination": null,
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_rational_7_by_1",
-                                    "typeString": "int_const 7"
+                                    "typeIdentifier": "t_rational_5_by_1",
+                                    "typeString": "int_const 5"
                                   },
-                                  "value": "7"
+                                  "value": "5"
                                 }
                               ],
                               "expression": {
                                 "argumentTypes": [
                                   {
-                                    "typeIdentifier": "t_rational_7_by_1",
-                                    "typeString": "int_const 7"
+                                    "typeIdentifier": "t_rational_5_by_1",
+                                    "typeString": "int_const 5"
                                   }
                                 ],
                                 "expression": {
@@ -7601,7 +7601,7 @@
                             "arguments": [
                               {
                                 "argumentTypes": null,
-                                "hexValue": "38",
+                                "hexValue": "36",
                                 "id": 1031,
                                 "isConstant": false,
                                 "isLValue": false,
@@ -7612,17 +7612,17 @@
                                 "src": "3717:1:2",
                                 "subdenomination": null,
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_rational_8_by_1",
-                                  "typeString": "int_const 8"
+                                  "typeIdentifier": "t_rational_6_by_1",
+                                  "typeString": "int_const 6"
                                 },
-                                "value": "8"
+                                "value": "6"
                               }
                             ],
                             "expression": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_rational_8_by_1",
-                                  "typeString": "int_const 8"
+                                  "typeIdentifier": "t_rational_6_by_1",
+                                  "typeString": "int_const 6"
                                 }
                               ],
                               "expression": {
@@ -7738,7 +7738,7 @@
                                   "name": "this",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 1302,
+                                  "referencedDeclaration": 1296,
                                   "src": "4187:4:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_contract$_YFMSTokenSale_$1263",
@@ -8351,7 +8351,7 @@
                                     "name": "this",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1302,
+                                    "referencedDeclaration": 1296,
                                     "src": "4498:4:2",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_contract$_YFMSTokenSale_$1263",
@@ -8856,7 +8856,7 @@
                                     "name": "this",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1302,
+                                    "referencedDeclaration": 1296,
                                     "src": "4822:4:2",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_contract$_YFMSTokenSale_$1263",
@@ -9060,7 +9060,7 @@
                                 "name": "this",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1302,
+                                "referencedDeclaration": 1296,
                                 "src": "4894:4:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_YFMSTokenSale_$1263",
@@ -9524,7 +9524,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1302,
+                            "referencedDeclaration": 1296,
                             "src": "5243:4:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_YFMSTokenSale_$1263",
@@ -12585,7 +12585,7 @@
                                   "name": "this",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 1302,
+                                  "referencedDeclaration": 1296,
                                   "src": "2540:4:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_contract$_YFMSTokenSale_$1263",
@@ -13911,7 +13911,7 @@
                                     "arguments": [
                                       {
                                         "argumentTypes": null,
-                                        "hexValue": "34",
+                                        "hexValue": "35",
                                         "id": 932,
                                         "isConstant": false,
                                         "isLValue": false,
@@ -13922,17 +13922,17 @@
                                         "src": "3130:1:2",
                                         "subdenomination": null,
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_rational_4_by_1",
-                                          "typeString": "int_const 4"
+                                          "typeIdentifier": "t_rational_5_by_1",
+                                          "typeString": "int_const 5"
                                         },
-                                        "value": "4"
+                                        "value": "5"
                                       }
                                     ],
                                     "expression": {
                                       "argumentTypes": [
                                         {
-                                          "typeIdentifier": "t_rational_4_by_1",
-                                          "typeString": "int_const 4"
+                                          "typeIdentifier": "t_rational_5_by_1",
+                                          "typeString": "int_const 5"
                                         }
                                       ],
                                       "expression": {
@@ -14173,7 +14173,7 @@
                                 "arguments": [
                                   {
                                     "argumentTypes": null,
-                                    "hexValue": "36",
+                                    "hexValue": "35",
                                     "id": 895,
                                     "isConstant": false,
                                     "isLValue": false,
@@ -14184,17 +14184,17 @@
                                     "src": "2940:1:2",
                                     "subdenomination": null,
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_rational_6_by_1",
-                                      "typeString": "int_const 6"
+                                      "typeIdentifier": "t_rational_5_by_1",
+                                      "typeString": "int_const 5"
                                     },
-                                    "value": "6"
+                                    "value": "5"
                                   }
                                 ],
                                 "expression": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_rational_6_by_1",
-                                      "typeString": "int_const 6"
+                                      "typeIdentifier": "t_rational_5_by_1",
+                                      "typeString": "int_const 5"
                                     }
                                   ],
                                   "expression": {
@@ -14304,7 +14304,7 @@
                               "arguments": [
                                 {
                                   "argumentTypes": null,
-                                  "hexValue": "37",
+                                  "hexValue": "35",
                                   "id": 873,
                                   "isConstant": false,
                                   "isLValue": false,
@@ -14315,17 +14315,17 @@
                                   "src": "2829:1:2",
                                   "subdenomination": null,
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_rational_7_by_1",
-                                    "typeString": "int_const 7"
+                                    "typeIdentifier": "t_rational_5_by_1",
+                                    "typeString": "int_const 5"
                                   },
-                                  "value": "7"
+                                  "value": "5"
                                 }
                               ],
                               "expression": {
                                 "argumentTypes": [
                                   {
-                                    "typeIdentifier": "t_rational_7_by_1",
-                                    "typeString": "int_const 7"
+                                    "typeIdentifier": "t_rational_5_by_1",
+                                    "typeString": "int_const 5"
                                   }
                                 ],
                                 "expression": {
@@ -14435,7 +14435,7 @@
                             "arguments": [
                               {
                                 "argumentTypes": null,
-                                "hexValue": "38",
+                                "hexValue": "36",
                                 "id": 851,
                                 "isConstant": false,
                                 "isLValue": false,
@@ -14446,17 +14446,17 @@
                                 "src": "2718:1:2",
                                 "subdenomination": null,
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_rational_8_by_1",
-                                  "typeString": "int_const 8"
+                                  "typeIdentifier": "t_rational_6_by_1",
+                                  "typeString": "int_const 6"
                                 },
-                                "value": "8"
+                                "value": "6"
                               }
                             ],
                             "expression": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_rational_8_by_1",
-                                  "typeString": "int_const 8"
+                                  "typeIdentifier": "t_rational_6_by_1",
+                                  "typeString": "int_const 6"
                                 }
                               ],
                               "expression": {
@@ -14572,7 +14572,7 @@
                                   "name": "this",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 1302,
+                                  "referencedDeclaration": 1296,
                                   "src": "3195:4:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_contract$_YFMSTokenSale_$1263",
@@ -15317,7 +15317,7 @@
                                   "name": "this",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 1302,
+                                  "referencedDeclaration": 1296,
                                   "src": "3542:4:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_contract$_YFMSTokenSale_$1263",
@@ -16643,7 +16643,7 @@
                                     "arguments": [
                                       {
                                         "argumentTypes": null,
-                                        "hexValue": "34",
+                                        "hexValue": "35",
                                         "id": 1112,
                                         "isConstant": false,
                                         "isLValue": false,
@@ -16654,17 +16654,17 @@
                                         "src": "4125:1:2",
                                         "subdenomination": null,
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_rational_4_by_1",
-                                          "typeString": "int_const 4"
+                                          "typeIdentifier": "t_rational_5_by_1",
+                                          "typeString": "int_const 5"
                                         },
-                                        "value": "4"
+                                        "value": "5"
                                       }
                                     ],
                                     "expression": {
                                       "argumentTypes": [
                                         {
-                                          "typeIdentifier": "t_rational_4_by_1",
-                                          "typeString": "int_const 4"
+                                          "typeIdentifier": "t_rational_5_by_1",
+                                          "typeString": "int_const 5"
                                         }
                                       ],
                                       "expression": {
@@ -16905,7 +16905,7 @@
                                 "arguments": [
                                   {
                                     "argumentTypes": null,
-                                    "hexValue": "36",
+                                    "hexValue": "35",
                                     "id": 1075,
                                     "isConstant": false,
                                     "isLValue": false,
@@ -16916,17 +16916,17 @@
                                     "src": "3937:1:2",
                                     "subdenomination": null,
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_rational_6_by_1",
-                                      "typeString": "int_const 6"
+                                      "typeIdentifier": "t_rational_5_by_1",
+                                      "typeString": "int_const 5"
                                     },
-                                    "value": "6"
+                                    "value": "5"
                                   }
                                 ],
                                 "expression": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_rational_6_by_1",
-                                      "typeString": "int_const 6"
+                                      "typeIdentifier": "t_rational_5_by_1",
+                                      "typeString": "int_const 5"
                                     }
                                   ],
                                   "expression": {
@@ -17036,7 +17036,7 @@
                               "arguments": [
                                 {
                                   "argumentTypes": null,
-                                  "hexValue": "37",
+                                  "hexValue": "35",
                                   "id": 1053,
                                   "isConstant": false,
                                   "isLValue": false,
@@ -17047,17 +17047,17 @@
                                   "src": "3827:1:2",
                                   "subdenomination": null,
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_rational_7_by_1",
-                                    "typeString": "int_const 7"
+                                    "typeIdentifier": "t_rational_5_by_1",
+                                    "typeString": "int_const 5"
                                   },
-                                  "value": "7"
+                                  "value": "5"
                                 }
                               ],
                               "expression": {
                                 "argumentTypes": [
                                   {
-                                    "typeIdentifier": "t_rational_7_by_1",
-                                    "typeString": "int_const 7"
+                                    "typeIdentifier": "t_rational_5_by_1",
+                                    "typeString": "int_const 5"
                                   }
                                 ],
                                 "expression": {
@@ -17167,7 +17167,7 @@
                             "arguments": [
                               {
                                 "argumentTypes": null,
-                                "hexValue": "38",
+                                "hexValue": "36",
                                 "id": 1031,
                                 "isConstant": false,
                                 "isLValue": false,
@@ -17178,17 +17178,17 @@
                                 "src": "3717:1:2",
                                 "subdenomination": null,
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_rational_8_by_1",
-                                  "typeString": "int_const 8"
+                                  "typeIdentifier": "t_rational_6_by_1",
+                                  "typeString": "int_const 6"
                                 },
-                                "value": "8"
+                                "value": "6"
                               }
                             ],
                             "expression": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_rational_8_by_1",
-                                  "typeString": "int_const 8"
+                                  "typeIdentifier": "t_rational_6_by_1",
+                                  "typeString": "int_const 6"
                                 }
                               ],
                               "expression": {
@@ -17304,7 +17304,7 @@
                                   "name": "this",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 1302,
+                                  "referencedDeclaration": 1296,
                                   "src": "4187:4:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_contract$_YFMSTokenSale_$1263",
@@ -17917,7 +17917,7 @@
                                     "name": "this",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1302,
+                                    "referencedDeclaration": 1296,
                                     "src": "4498:4:2",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_contract$_YFMSTokenSale_$1263",
@@ -18422,7 +18422,7 @@
                                     "name": "this",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1302,
+                                    "referencedDeclaration": 1296,
                                     "src": "4822:4:2",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_contract$_YFMSTokenSale_$1263",
@@ -18626,7 +18626,7 @@
                                 "name": "this",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1302,
+                                "referencedDeclaration": 1296,
                                 "src": "4894:4:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_YFMSTokenSale_$1263",
@@ -19090,7 +19090,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1302,
+                            "referencedDeclaration": 1296,
                             "src": "5243:4:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_YFMSTokenSale_$1263",
@@ -19267,7 +19267,7 @@
   },
   "networks": {},
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-09-12T19:07:35.180Z",
+  "updatedAt": "2020-09-12T21:29:50.001Z",
   "devdoc": {
     "methods": {}
   },
