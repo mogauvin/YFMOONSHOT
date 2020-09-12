@@ -1,4 +1,5 @@
 const Token = artifacts.require('./YFMSToken')
+const Presale = artifacts.require('./YFMSTokenSale')
 
 require('chai')
   .use(require('chai-as-promised'))
@@ -10,7 +11,7 @@ const tokens = (n) => {
 
 const EVM_REVERT = 'VM Exception while processing transaction: revert'
 
-contract('Token', ([deployer, receiver, exchange]) => {
+contract('Token', ([deployer, receiver, account, exchange]) => {
   const name = 'YF Moonshot'
   const symbol = 'YFMS'
   const decimals = '18'
@@ -54,8 +55,8 @@ contract('Token', ([deployer, receiver, exchange]) => {
       const supply = await token.totalSupply() 
       const acc = await token.balanceOf(deployer)
 
-      //result.toString().should.equal(tokens(1000).toString())
-      //supply.toString().should.equal(tokens(34000).toString())
+      result.toString().should.equal(tokens(1000).toString())
+      supply.toString().should.equal(tokens(34000).toString())
       acc.toString().should.equal(tokens(34000).toString())
     })
 
@@ -145,29 +146,29 @@ contract('Token', ([deployer, receiver, exchange]) => {
     })
   })
 
-  describe('tranfering tokens after approval', () => {
+  describe('transfering tokens after approval', () => {
     let result
     let amount
 
     beforeEach(async () => {
       amount = tokens(100)
-      await token.approve(exchange, amount, { from: deployer })
+      await token.approve(receiver, amount, { from: deployer })
     })
 
     describe('success', () => {
       beforeEach(async () => {
-        result = await token.transferFrom(deployer, receiver, amount, { from: exchange})
+        result = await token.transferFrom(deployer, account, amount, { from: receiver })
       })
 
       it('transfers token balances', async () => {
         const balanceOfSender = await token.balanceOf(deployer)
-        const balanceOfReceiver = await token.balanceOf(receiver)
+        const balanceOfReceiver = await token.balanceOf(account)
         balanceOfSender.toString().should.equal(tokens(34900).toString())
         balanceOfReceiver.toString().should.equal(tokens(100).toString())
       })
 
       it('resets the allowance', async () => {
-        const allowance = await token.allowance(deployer, exchange)
+        const allowance = await token.allowance(deployer, receiver)
         allowance.toString().should.equal('0')
       })
     })
@@ -175,13 +176,34 @@ contract('Token', ([deployer, receiver, exchange]) => {
     describe('failure', () => {
       it('transfer too many tokens', async () => {
         const invalidAmount = tokens(1000)
-        await token.transferFrom(deployer, receiver, invalidAmount, { from: exchange })
+        await token.transferFrom(deployer, account, invalidAmount, { from: receiver })
           .should.be.rejectedWith(EVM_REVERT)
       })
 
       it('rejects invalid recipients', async () => {
-        await token.transferFrom(deployer, 0x0, amount, { from: exchange })
+        await token.transferFrom(deployer, 0x0, amount, { from: receiver })
           .should.be.rejected
+      })
+    })
+  })
+
+  describe('testing the presale contract', async () => {
+    let result
+    let amount
+    let presale
+
+    beforeEach(async () => {
+      // initialize presale, approve for tokens, then transfer funds.
+      presale = await Presale.new(exchange)
+      amount = tokens(10000)
+      await token.approve(exchange, amount, { from: deployer })
+      await token.transfer(exchange, amount, { from: deployer })
+    })
+
+    describe('success', async () => {
+      it('balance should be amount', async () => {
+        result = await token.balanceOf(exchange)
+        result.toString().should.equal(tokens(10000).toString())
       })
     })
   })
