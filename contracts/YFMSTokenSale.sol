@@ -70,7 +70,7 @@ interface ERC20 {
 
 contract YFMSTokenSale {
   using SafeMath for uint256;
-  
+
   uint256 public totalSold;
   ERC20 public YFMSToken;
   address payable public owner;
@@ -159,7 +159,7 @@ contract YFMSTokenSale {
   }
   
   //Function to query the supply of YFMS in the contract
-  function availableYFMS() public view returns(uint256){
+  function availableYFMS() public view returns(uint256) {
     return YFMSToken.balanceOf(address(this));
   }
 }

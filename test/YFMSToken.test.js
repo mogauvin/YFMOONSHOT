@@ -9,6 +9,8 @@ const tokens = (n) => {
   return web3.utils.toWei(n.toString(), 'ether')
 }
 
+const ether = n => tokens(n)
+
 const EVM_REVERT = 'VM Exception while processing transaction: revert'
 
 contract('Token', ([deployer, receiver, account, exchange]) => {
@@ -188,22 +190,43 @@ contract('Token', ([deployer, receiver, account, exchange]) => {
   })
 
   describe('testing the presale contract', async () => {
-    let result
-    let amount
-    let presale
+    describe('success', async () => {
+      let amount
+      let presale
+      let result
 
-    beforeEach(async () => {
-      // initialize presale, approve for tokens, then transfer funds.
-      presale = await Presale.new(exchange)
-      amount = tokens(10000)
-      await token.approve(exchange, amount, { from: deployer })
-      await token.transfer(exchange, amount, { from: deployer })
+      beforeEach(async () => {
+        presale = await Presale.new(deployer)
+        amount = tokens(10000)
+        await token.approve(presale.address, amount, { from: deployer })
+        await token.transfer(presale.address, amount, { from: deployer })
+        await presale.startSale({ from: deployer })
+      })
+
+      // approve for tokens, transfer funds, initialize presale.
+      it('balance should be amount', async () => {
+        result = await token.balanceOf(presale.address)
+        result.toString().should.equal(tokens(10000).toString())
+      })
+
+      it('validate owner', async () => {
+        result = await presale.owner()
+        result.should.equal(deployer)
+      })
     })
 
-    describe('success', async () => {
-      it('balance should be amount', async () => {
-        result = await token.balanceOf(exchange)
-        result.toString().should.equal(tokens(10000).toString())
+    describe('failure', async () => {
+      // initialize presale, approve for tokens, then transfer funds.
+      beforeEach(async () => {
+        presale = await Presale.new(deployer)
+        amount = tokens(10000)
+        invalidAmount = tokens(100000)
+        await token.approve(exchange, amount, { from: deployer })
+      })
+
+      it('transfer invalid amount', async () => {
+        await token.transfer(exchange, invalidAmount, { from: deployer })
+          .should.be.rejectedWith(EVM_REVERT)
       })
     })
   })
