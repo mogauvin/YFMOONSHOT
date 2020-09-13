@@ -94,13 +94,13 @@ contract YFMSTokenSale {
     if (now.sub(startDate) <= 1 days) {
        amount = msg.value.mul(6);
     } else if(now.sub(startDate) > 1 days && now.sub(startDate) <= 2 days) {
-       amount = msg.value.mul(5);
+       amount = msg.value.mul(5.5);
     } else if(now.sub(startDate) > 2 days && now.sub(startDate) <= 3 days) {
        amount = msg.value.mul(5);
     } else if(now.sub(startDate) > 3 days && now.sub(startDate) <= 4 days) {
-       amount = msg.value.mul(5);
+       amount = msg.value.mul(4.5);
     } else if(now.sub(startDate) > 4 days) {
-       amount = msg.value.mul(5);
+       amount = msg.value.mul(4);
     }
     
     require(amount <= YFMSToken.balanceOf(address(this)));
@@ -120,13 +120,13 @@ contract YFMSTokenSale {
     if(now.sub(startDate) <= 1 days) {
       amount = msg.value.mul(6);
     } else if(now.sub(startDate) > 1 days && now.sub(startDate) <= 2 days) {
-      amount = msg.value.mul(5);
+      amount = msg.value.mul(5.5);
     } else if(now.sub(startDate) > 2 days && now.sub(startDate) <= 3 days) {
       amount = msg.value.mul(5);
     } else if(now.sub(startDate) > 3 days && now.sub(startDate) <= 4 days) {
-      amount = msg.value.mul(5);
+      amount = msg.value.mul(4.5);
     } else if(now.sub(startDate) > 4 days) {
-      amount = msg.value.mul(5);
+      amount = msg.value.mul(4);
     }
  
     require(amount <= YFMSToken.balanceOf(address(this)));
