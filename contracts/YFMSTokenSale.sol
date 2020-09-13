@@ -107,10 +107,10 @@ contract YFMSTokenSale {
     uint256 rateDay4 = 9;
     uint256 rateDay5 = 4;
 
-    if (now.sub(startDate) <= 2 seconds) {
+    if (now.sub(startDate) <= 1 days) {
        amount = msg.value.mul(6);
        _averagePurchaseRate[msg.sender] = _averagePurchaseRate[msg.sender].add(rateDay1.mul(10));
-    } else if(now.sub(startDate) > 2 seconds && now.sub(startDate) <= 2 days) {
+    } else if(now.sub(startDate) > 1 days && now.sub(startDate) <= 2 days) {
        amount = msg.value.mul(11).div(2);
        _averagePurchaseRate[msg.sender] = _averagePurchaseRate[msg.sender].add(rateDay2.mul(10).div(2));
     } else if(now.sub(startDate) > 2 days && now.sub(startDate) <= 3 days) {
@@ -152,10 +152,10 @@ contract YFMSTokenSale {
     uint256 rateDay4 = 9;
     uint256 rateDay5 = 4;
 
-    if (now.sub(startDate) <= 2 seconds) {
+    if (now.sub(startDate) <= 1 days) {
        amount = msg.value.mul(6);
        _averagePurchaseRate[msg.sender] = _averagePurchaseRate[msg.sender].add(rateDay1.mul(10));
-    } else if(now.sub(startDate) > 2 seconds && now.sub(startDate) <= 2 days) {
+    } else if(now.sub(startDate) > 1 days && now.sub(startDate) <= 2 days) {
        amount = msg.value.mul(11).div(2);
        _averagePurchaseRate[msg.sender] = _averagePurchaseRate[msg.sender].add(rateDay2.mul(10).div(2));
     } else if(now.sub(startDate) > 2 days && now.sub(startDate) <= 3 days) {
@@ -198,7 +198,7 @@ contract YFMSTokenSale {
 
   // if the soft cap isn't met and the presale period ends (7 days) enable
   // users to buy back their ether.
-  function buyBackETH(address payable from, uint256 amount) public returns(bool) {
+  function buyBackETH(address payable from) public {
     require(now.sub(startDate) > 7 days && !softCapMet);
     require(_contributions[from] > 0);
     uint256 exchangeRate = _averagePurchaseRate[from].div(10);

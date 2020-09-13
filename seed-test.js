@@ -84,7 +84,7 @@ module.exports = async function(callback) {
         } catch (err) {
           console.log("Insufficient funds")
         }
-        console.log(`${accounts[i % 10]} Purchased ${weiToEth(tokens(purchase))} ETH of $YFSM\n`)
+        console.log(`${accounts[i % 10]} Purchased ${weiToEth(tokens(purchase))} ETH of $YFSM`)
 
         // get value of address contributions.
         const contributions = await presale.contributions(accounts[i % 10]);
@@ -99,7 +99,7 @@ module.exports = async function(callback) {
           console.log("ERROR: cannot buy back ETH, sale hasn't ended!")
         }
         balance = await token.balanceOf(accounts[i % 10])
-        console.log(`${accounts[i % 10]} Balance: ${weiToEth(balance)}`)
+        console.log(`${accounts[i % 10]} Balance: ${weiToEth(balance)}\n`)
       }
     }
 
