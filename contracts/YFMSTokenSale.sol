@@ -90,9 +90,12 @@ contract YFMSTokenSale {
     YFMSToken = ERC20(_wallet);
   }
 
-  // Enables users to buy back their ETH after day 7 if soft
-  // cap isn't met.
-
+  uint256 amount;
+  uint256 rateDay1 = 6;
+  uint256 rateDay2 = 11;
+  uint256 rateDay3 = 5;
+  uint256 rateDay4 = 9;
+  uint256 rateDay5 = 4;
  
   // Converts ETH to YFMS and sends new YFMS to the sender
   receive () external payable {
@@ -100,13 +103,6 @@ contract YFMSTokenSale {
     require(YFMSToken.balanceOf(address(this)) > 0);
     require(msg.value >= 0.1 ether && msg.value <= 50 ether);
      
-    uint256 amount;
-    uint256 rateDay1 = 6;
-    uint256 rateDay2 = 11;
-    uint256 rateDay3 = 5;
-    uint256 rateDay4 = 9;
-    uint256 rateDay5 = 4;
-
     if (now.sub(startDate) <= 1 days) {
        amount = msg.value.mul(6);
        _averagePurchaseRate[msg.sender] = _averagePurchaseRate[msg.sender].add(rateDay1.mul(10));
@@ -134,86 +130,79 @@ contract YFMSTokenSale {
     _contributions[msg.sender] = _contributions[msg.sender].add(amount);
     _numberOfContributions[msg.sender] = _numberOfContributions[msg.sender].add(1);
     // check if soft cap is met.
-    if (!softCapMet && collectedETH >= 250 ether) {
+    if (!softCapMet && collectedETH >= 150 ether) {
       softCapMet = true;
     }
   }
 
-  // Converts ETH to YFMS and sends new YFMS to the sender
-  function contribute() external payable {
-    require(startDate > 0 && now.sub(startDate) <= 7 days);
-    require(YFMSToken.balanceOf(address(this)) > 0);
-    require(msg.value >= 0.1 ether && msg.value <= 50 ether);
-     
-    uint256 amount;
-    uint256 rateDay1 = 6;
-    uint256 rateDay2 = 11;
-    uint256 rateDay3 = 5;
-    uint256 rateDay4 = 9;
-    uint256 rateDay5 = 4;
+    // Converts ETH to YFMS and sends new YFMS to the sender
+    function contribute() external payable {
+      require(startDate > 0 && now.sub(startDate) <= 7 days);
+      require(YFMSToken.balanceOf(address(this)) > 0);
+      require(msg.value >= 0.1 ether && msg.value <= 50 ether);
 
-    if (now.sub(startDate) <= 1 days) {
-       amount = msg.value.mul(6);
-       _averagePurchaseRate[msg.sender] = _averagePurchaseRate[msg.sender].add(rateDay1.mul(10));
-    } else if(now.sub(startDate) > 1 days && now.sub(startDate) <= 2 days) {
-       amount = msg.value.mul(11).div(2);
-       _averagePurchaseRate[msg.sender] = _averagePurchaseRate[msg.sender].add(rateDay2.mul(10).div(2));
-    } else if(now.sub(startDate) > 2 days && now.sub(startDate) <= 3 days) {
-       amount = msg.value.mul(5);
-       _averagePurchaseRate[msg.sender] = _averagePurchaseRate[msg.sender].add(rateDay3.mul(10));
-    } else if(now.sub(startDate) > 3 days && now.sub(startDate) <= 4 days) {
-       amount = msg.value.mul(9).div(2);
-       _averagePurchaseRate[msg.sender] = _averagePurchaseRate[msg.sender].add(rateDay4.mul(10).div(2));
-    } else if(now.sub(startDate) > 4 days) {
-       amount = msg.value.mul(4);
-       _averagePurchaseRate[msg.sender] = _averagePurchaseRate[msg.sender].add(rateDay5.mul(10));
+      if (now.sub(startDate) <= 1 days) {
+         amount = msg.value.mul(6);
+         _averagePurchaseRate[msg.sender] = _averagePurchaseRate[msg.sender].add(rateDay1.mul(10));
+      } else if(now.sub(startDate) > 1 days && now.sub(startDate) <= 2 days) {
+         amount = msg.value.mul(11).div(2);
+         _averagePurchaseRate[msg.sender] = _averagePurchaseRate[msg.sender].add(rateDay2.mul(10).div(2));
+      } else if(now.sub(startDate) > 2 days && now.sub(startDate) <= 3 days) {
+         amount = msg.value.mul(5);
+         _averagePurchaseRate[msg.sender] = _averagePurchaseRate[msg.sender].add(rateDay3.mul(10));
+      } else if(now.sub(startDate) > 3 days && now.sub(startDate) <= 4 days) {
+         amount = msg.value.mul(9).div(2);
+         _averagePurchaseRate[msg.sender] = _averagePurchaseRate[msg.sender].add(rateDay4.mul(10).div(2));
+      } else if(now.sub(startDate) > 4 days) {
+         amount = msg.value.mul(4);
+         _averagePurchaseRate[msg.sender] = _averagePurchaseRate[msg.sender].add(rateDay5.mul(10));
+      }
+          
+      require(amount <= YFMSToken.balanceOf(address(this)));
+      // update constants.
+      totalSold = totalSold.add(amount);
+      collectedETH = collectedETH.add(msg.value);
+      // transfer the tokens.
+      YFMSToken.transfer(msg.sender, amount);
+      // update address contribution + total contributions.
+      _contributions[msg.sender] = _contributions[msg.sender].add(amount);
+      _numberOfContributions[msg.sender] = _numberOfContributions[msg.sender].add(1);
+      // check if soft cap is met.
+      if (!softCapMet && collectedETH >= 150 ether) {
+        softCapMet = true;
+      }
     }
-        
-    require(amount <= YFMSToken.balanceOf(address(this)));
-    // update constants.
-    totalSold = totalSold.add(amount);
-    collectedETH = collectedETH.add(msg.value);
-    // transfer the tokens.
-    YFMSToken.transfer(msg.sender, amount);
-    // update address contribution + total contributions.
-    _contributions[msg.sender] = _contributions[msg.sender].add(amount);
-    _numberOfContributions[msg.sender] = _numberOfContributions[msg.sender].add(1);
-    // check if soft cap is met.
-    if (!softCapMet && collectedETH >= 250 ether) {
-      softCapMet = true;
+
+    function numberOfContributions(address from) public view returns(uint256) {
+      return _numberOfContributions[address(from)]; 
     }
+
+    function contributions(address from) public view returns(uint256) {
+      return _contributions[address(from)];
+    }
+
+    function averagePurchaseRate(address from) public view returns(uint256) {
+      return _averagePurchaseRate[address(from)];
+    }
+
+    // if the soft cap isn't met and the presale period ends (7 days) enable
+    // users to buy back their ether.
+    function buyBackETH(address payable from) public {
+      require(now.sub(startDate) > 7 days && !softCapMet);
+      require(_contributions[from] > 0);
+      uint256 exchangeRate = _averagePurchaseRate[from].div(10);
+      from.transfer(_contributions[from].div(exchangeRate));
+      // remove funds from users contributions.
+      _contributions[from] = 0;
   }
 
-  function numberOfContributions(address from) public view returns(uint256) {
-    return _numberOfContributions[address(from)]; 
-  }
-
-  function contributions(address from) public view returns(uint256) {
-    return _contributions[address(from)];
-  }
-
-  function averagePurchaseRate(address from) public view returns(uint256) {
-    return _averagePurchaseRate[address(from)];
-  }
-
-  // if the soft cap isn't met and the presale period ends (7 days) enable
-  // users to buy back their ether.
-  function buyBackETH(address payable from) public {
-    require(now.sub(startDate) > 7 days && !softCapMet);
-    require(_contributions[from] > 0);
-    uint256 exchangeRate = _averagePurchaseRate[from].div(10);
-    from.transfer(_contributions[from].div(exchangeRate));
-    // remove funds from users contributions.
-    _contributions[from] = 0;
-  }
-
-  // Function to withdraw raised ETH (minimum 250)
+  // Function to withdraw raised ETH (minimum 150)
   // Only the contract owner can call this function
   function withdrawETH() public {
     require(msg.sender == owner && address(this).balance > 0 && softCapMet == true);
-    uint256 amount = collectedETH;
+    uint256 withdrawAmount = collectedETH;
     collectedETH = 0;
-    owner.transfer(amount);
+    owner.transfer(withdrawAmount);
   }
   
   // Function to withdraw available YFMS
