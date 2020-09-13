@@ -74,13 +74,13 @@ module.exports = async function(callback) {
       console.log(weiToEth(remaining))
       
       try {
-        await presale.contribute({ from: accounts[i % 10], value: tokens(49) }) 
+        await presale.contribute({ from: accounts[i % 10], value: tokens(20) }) 
       } catch (err) {
         console.log("Insufficient funds")
       }
-      console.log(`${accounts[i % 10]} Purchased ${weiToEth(tokens(1))} ETH of $YFSM`)
+      console.log(`${accounts[i % 10]} Purchased ${weiToEth(tokens(20))} ETH of $YFSM`)
 
-      balance = await token.balanceOf(account1)
+      balance = await token.balanceOf(accounts[i % 10])
       console.log(`${accounts[i % 10]} Balance: ${weiToEth(balance)}`)
     }
 

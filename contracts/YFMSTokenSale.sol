@@ -76,6 +76,7 @@ contract YFMSTokenSale {
   address payable public owner;
 
   uint256 public collectedETH;
+  
   uint256 public startDate;
 
   constructor(address _wallet) public {
@@ -94,11 +95,11 @@ contract YFMSTokenSale {
     if (now.sub(startDate) <= 1 days) {
        amount = msg.value.mul(6);
     } else if(now.sub(startDate) > 1 days && now.sub(startDate) <= 2 days) {
-       amount = msg.value.mul(5.5);
+       amount = msg.value.mul(11).div(2);
     } else if(now.sub(startDate) > 2 days && now.sub(startDate) <= 3 days) {
        amount = msg.value.mul(5);
     } else if(now.sub(startDate) > 3 days && now.sub(startDate) <= 4 days) {
-       amount = msg.value.mul(4.5);
+       amount = msg.value.mul(9).div(2);
     } else if(now.sub(startDate) > 4 days) {
        amount = msg.value.mul(4);
     }
@@ -116,17 +117,17 @@ contract YFMSTokenSale {
     require(msg.value >= 0.1 ether && msg.value <= 50 ether);
       
     uint256 amount;
-    
-    if(now.sub(startDate) <= 1 days) {
-      amount = msg.value.mul(6);
+
+    if (now.sub(startDate) <= 1 days) {
+       amount = msg.value.mul(6);
     } else if(now.sub(startDate) > 1 days && now.sub(startDate) <= 2 days) {
-      amount = msg.value.mul(5.5);
+       amount = msg.value.mul(11).div(2);
     } else if(now.sub(startDate) > 2 days && now.sub(startDate) <= 3 days) {
-      amount = msg.value.mul(5);
+       amount = msg.value.mul(5);
     } else if(now.sub(startDate) > 3 days && now.sub(startDate) <= 4 days) {
-      amount = msg.value.mul(4.5);
+       amount = msg.value.mul(9).div(2);
     } else if(now.sub(startDate) > 4 days) {
-      amount = msg.value.mul(4);
+       amount = msg.value.mul(4);
     }
  
     require(amount <= YFMSToken.balanceOf(address(this)));
@@ -135,10 +136,10 @@ contract YFMSTokenSale {
     YFMSToken.transfer(msg.sender, amount);
   }
 
-  // Function to withdraw raised ETH
+  // Function to withdraw raised ETH (minimum 250)
   // Only the contract owner can call this function
   function withdrawETH() public {
-    require(msg.sender == owner && address(this).balance > 0 && collectedETH > 0);
+    require(msg.sender == owner && address(this).balance > 0);
     uint256 amount = collectedETH;
     collectedETH = 0;
     owner.transfer(amount);
