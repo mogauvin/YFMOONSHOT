@@ -68,20 +68,39 @@ module.exports = async function(callback) {
     // run a mock sale using 1/2 supply.
     let remaining 
 
-    for (let i=1; i < 20; i++) {
-      setTimeout(() => null, 1000)
-      remaining = await presale.availableYFMS()
-      console.log(weiToEth(remaining))
-      
-      try {
-        await presale.contribute({ from: accounts[i % 10], value: tokens(20) }) 
-      } catch (err) {
-        console.log("Insufficient funds")
-      }
-      console.log(`${accounts[i % 10]} Purchased ${weiToEth(tokens(20))} ETH of $YFSM`)
+    for (let i=0; i < 20; i++) {
+      if (i % 10 !== 0) {
+        // buffer for a second.
+        await new Promise(resolve => setTimeout(resolve, 1000))
 
-      balance = await token.balanceOf(accounts[i % 10])
-      console.log(`${accounts[i % 10]} Balance: ${weiToEth(balance)}`)
+        remaining = await presale.availableYFMS()
+        console.log(weiToEth(remaining))
+
+        // generate random number -- tokens to buy.
+        const purchase = Math.floor(Math.random() * 50);
+        
+        try {
+          await presale.contribute({ from: accounts[i % 10], value: tokens(purchase) })
+        } catch (err) {
+          console.log("Insufficient funds")
+        }
+        console.log(`${accounts[i % 10]} Purchased ${weiToEth(tokens(purchase))} ETH of $YFSM\n`)
+
+        // get value of address contributions.
+        const contributions = await presale.contributions(accounts[i % 10]);
+        const numberOfCont = await presale.numberOfContributions(accounts[i % 10]);
+        const avgPurchase = await presale.averagePurchaseRate(accounts[i % 10]);
+
+        console.log(`${weiToEth(contributions)} - ${numberOfCont} - ${avgPurchase}`)
+        // try to buy back Ether.
+        try {
+          await presale.buyBackETH(accounts[i % 10])
+        } catch (err) {
+          console.log("ERROR: cannot buy back ETH, sale hasn't ended!")
+        }
+        balance = await token.balanceOf(accounts[i % 10])
+        console.log(`${accounts[i % 10]} Balance: ${weiToEth(balance)}`)
+      }
     }
 
     // print off collect ETH and remaining YFMS
