@@ -1,6 +1,6 @@
 // Contracts
 const Token   = artifacts.require("YFMSToken")
-const Presale = artifacts.require("YFMSTokenSale")
+const Presale = artifacts.require("YFMSTokenSaleTEST")
 
 // Utils
 const ETHER_ADDRESS = '0x0000000000000000000000000000000000000000' // Ether token deposit address
@@ -71,7 +71,7 @@ module.exports = async function(callback) {
     for (let i=0; i < 20; i++) {
       if (i % 10 !== 0) {
         // buffer for a second.
-        await new Promise(resolve => setTimeout(resolve, 1000))
+        await new Promise(resolve => setTimeout(resolve, 250))
 
         remaining = await presale.availableYFMS()
         console.log(weiToEth(remaining))
@@ -93,10 +93,13 @@ module.exports = async function(callback) {
 
         console.log(`${weiToEth(contributions)} - ${numberOfCont} - ${avgPurchase}`)
         // try to buy back Ether.
+        await presale.isSoftCapMet();
+
         try {
           await presale.buyBackETH(accounts[i % 10])
         } catch (err) {
-          console.log("ERROR: cannot buy back ETH, sale hasn't ended!")
+          console.log(err)
+          //console.log("ERROR: cannot buy back ETH, sale hasn't ended!")
         }
         balance = await token.balanceOf(accounts[i % 10])
         console.log(`${accounts[i % 10]} Balance: ${weiToEth(balance)}\n`)
@@ -108,6 +111,7 @@ module.exports = async function(callback) {
     console.log(`Collected ETH: ${weiToEth(collected)}`)
     remaining = await presale.availableYFMS()
     console.log(`Remaining YFMS: ${weiToEth(remaining)}`)
+
 
     // withdraw ETH [fail first]
     try {
