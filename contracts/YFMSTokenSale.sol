@@ -190,11 +190,12 @@ contract YFMSTokenSale {
   function buyBackETH(address payable from) public {
     require(now.sub(startDate) > 7 days && !softCapMet);
     require(_contributions[from] > 0);
-    uint256 exchangeRate = _averagePurchaseRate[from].div(10);
-    from.transfer(_contributions[from].div(exchangeRate));
-    YFMSToken.transfer(owner, _contributions[from]);
+    uint256 exchangeRate = _averagePurchaseRate[from].div(10).div(_numberOfContributions[from]);
+    uint256 contribution = _contributions[from];
     // remove funds from users contributions.
     _contributions[from] = 0;
+    // transfer funds back to user.
+    from.transfer(contribution.div(exchangeRate));
   }
 
   // Function to withdraw raised ETH (minimum 150)
