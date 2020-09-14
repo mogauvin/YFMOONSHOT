@@ -210,7 +210,7 @@ contract YFMSTokenSale {
   // Function to withdraw available YFMS
   // Only the contract owner can call this function
   function withdrawYFMS() public {
-     require(msg.sender == owner && YFMSToken.balanceOf(address(this)) > 0);
+     require(msg.sender == owner && YFMSToken.balanceOf(address(this)) > 0 && now.sub(startDate) > 7);
      YFMSToken.transfer(owner, YFMSToken.balanceOf(address(this)));
   }
   
