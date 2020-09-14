@@ -24,12 +24,6 @@ require("dotenv").config()
 
 const fs = require('fs')
 const HDWalletProvider = require('@truffle/hdwallet-provider')
-const mnemonic = "library ecology idle toddler because you reduce outside risk cotton famous tree"
-const addresses = [
-  "831eb0cb3f952067d5547342032b501367efa00c57eea13701475f1334b50544",
-  "692f4d67569b673ed6289bddbc6489a7e6b28aadb9d9c4d42ac212c306bed4b5",
-  "12a84b083c0b23d65f2df9eb3153f2823616b5400e2121489c9e1edd10e62599"
-]
 
 module.exports = {
   networks: {
@@ -37,13 +31,6 @@ module.exports = {
       host: "127.0.0.1",
       port: 7545,
       network_id: "*"
-    },
-    ropsten: {
-      provider: () => {
-        return new HDWalletProvider(addresses, `https://ropsten.infura.io/v3/${process.env.INFURA_API_KEY}`, 0, 3)
-      },
-      gasPrice: 20000000000,
-      network_id: 3
     }
   },
   contracts_directory: "./contracts",

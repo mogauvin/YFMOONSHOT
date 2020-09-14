@@ -1,6 +1,6 @@
-// Contracts
+
 const Token   = artifacts.require("YFMSToken")
-const Presale = artifacts.require("YFMSTokenSaleTEST")
+const Presale = artifacts.require("YFMSTokenSale")
 
 // Utils
 const ETHER_ADDRESS = '0x0000000000000000000000000000000000000000' // Ether token deposit address
@@ -66,23 +66,22 @@ module.exports = async function(callback) {
    
 
     // run a mock sale using 1/2 supply.
-    let remaining 
+    let remaining
+    let purchase
 
-    for (let i=0; i < 20; i++) {
+    for (let i=0; i < 30; i++) {
       if (i % 10 !== 0) {
         // buffer for a second.
-        await new Promise(resolve => setTimeout(resolve, 250))
-
         remaining = await presale.availableYFMS()
         console.log(weiToEth(remaining))
 
         // generate random number -- tokens to buy.
-        const purchase = Math.floor(Math.random() * 50);
+        purchase = Math.ceil(Math.random() * 10)
         
         try {
-          await presale.contribute({ from: accounts[i % 10], value: tokens(purchase) })
+          await presale.contribute({ from: accounts[i % 10], value: tokens(purchase) || tokens(1) })
         } catch (err) {
-          console.log("Insufficient funds")
+          console.log(err)
         }
         console.log(`${accounts[i % 10]} Purchased ${weiToEth(tokens(purchase))} ETH of $YFSM`)
 
@@ -93,16 +92,18 @@ module.exports = async function(callback) {
 
         console.log(`${weiToEth(contributions)} - ${numberOfCont} - ${avgPurchase}`)
         // try to buy back Ether.
-        await presale.isSoftCapMet();
 
-        try {
-          await presale.buyBackETH(accounts[i % 10])
-        } catch (err) {
-          console.log(err)
-          //console.log("ERROR: cannot buy back ETH, sale hasn't ended!")
-        }
         balance = await token.balanceOf(accounts[i % 10])
         console.log(`${accounts[i % 10]} Balance: ${weiToEth(balance)}\n`)
+      }
+    }
+
+    for (let i=1; i < 10; i++) {
+      try {
+        await presale.buyBackETH(accounts[i % 10])
+        console.log(`${accounts[i % 10]} bought back.`)
+      } catch (err) {
+          console.log("ERROR: cannot withdraw funds")
       }
     }
 
@@ -111,7 +112,6 @@ module.exports = async function(callback) {
     console.log(`Collected ETH: ${weiToEth(collected)}`)
     remaining = await presale.availableYFMS()
     console.log(`Remaining YFMS: ${weiToEth(remaining)}`)
-
 
     // withdraw ETH [fail first]
     try {
